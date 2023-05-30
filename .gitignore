@@ -10,3 +10,6 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 window/build/*
+window/build/.ninja_deps
+window/build/.ninja_log
+window/build/window
