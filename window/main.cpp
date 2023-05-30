@@ -7,8 +7,11 @@
 #include <SFML/Window.hpp>
 
 int main(int, char**) {
-    sf::Window window(sf::VideoMode(800, 600), "Hello World");
 
+    sf::Window window;
+    window.create(sf::VideoMode(800, 600), "My window");
+
+    /*
     // Display the list of all the video modes available for fullscreen
     std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     for (std::size_t i = 0; i < modes.size(); ++i)
@@ -20,9 +23,22 @@ int main(int, char**) {
     }
     // Create a window with the same pixel depth as the desktop
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
-    window.create(sf::VideoMode(1024, 768, desktop.bitsPerPixel), "SFML window");
 
-    // wait for something to happen before closing window
+    window.create(sf::VideoMode(1024, 768, desktop.bitsPerPixel), "SFML window");
+    */
+
+    // run the program as long as the window is open
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
 
     return 0;
 }
